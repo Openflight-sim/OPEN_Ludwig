@@ -161,6 +161,10 @@ Expected output: `GPU: NVIDIA GeForce RTX XXXX` (or similar)
 
 ### Running Your First Simulation
 
+Note: the configuration files (config.yaml) for each case in this repository
+should enable comfortable execution on a 4Gb VRAM GPU. If you have more VRAM
+in your GPU increase the "surface_resolution:"
+
 1. **Prepare a case** (example: Stanford Bunny is included):
    ```
    CASES/
