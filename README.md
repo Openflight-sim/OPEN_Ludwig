@@ -215,7 +215,7 @@ CASES/
 
 - **Format**: Binary or ASCII STL
 - **Units**: Preferably meters (use `stl_scale` to convert)
-- **Quality**: Watertight mesh, no self-intersections
+- **Quality**: Watertight mesh and no self-intersections are preferred but it will run anyway.
 - **Orientation**: Flow typically along +X axis
 - **Origin**: Position doesn't matter (auto-centered in domain)
 
