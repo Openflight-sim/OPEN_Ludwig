@@ -514,7 +514,7 @@ If you use this solver in your research, please cite:
 ```bibtex
 @software{julialb,
   title = {JuliaLBM: GPU-Accelerated Lattice Boltzmann CFD Solver},
-  year = {2024},
+  year = {2026},
   url = {https://github.com/flt-acdesign/OPEN_Ludwig}  
 }
 ```
