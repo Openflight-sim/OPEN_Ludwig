@@ -414,32 +414,6 @@ The `forces.csv` file contains:
 | `Cmx, Cmy, Cmz` | Moment coefficients |
 | `U_inlet` | Inlet velocity (for ramp tracking) |
 
-**Python Analysis Example**:
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Load data
-df = pd.read_csv('RESULTS/forces.csv')
-
-# Plot coefficients vs time
-fig, axes = plt.subplots(2, 1, figsize=(10, 8))
-
-axes[0].plot(df['Time_phys'], df['Cd'], label='Cd')
-axes[0].plot(df['Time_phys'], df['Cl'], label='Cl')
-axes[0].set_xlabel('Time [s]')
-axes[0].set_ylabel('Coefficient')
-axes[0].legend()
-axes[0].set_title('Aerodynamic Coefficients')
-
-axes[1].plot(df['Time_phys'], df['Cmy'], label='Cm (pitch)')
-axes[1].set_xlabel('Time [s]')
-axes[1].set_ylabel('Moment Coefficient')
-axes[1].legend()
-
-plt.tight_layout()
-plt.savefig('coefficients.png', dpi=150)
-```
 
 ### Convergence Monitoring
 
