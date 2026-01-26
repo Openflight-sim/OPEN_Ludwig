@@ -523,7 +523,7 @@ If you use this solver in your research, please cite:
 
 ## License
 
-This project is licensed under the 
+This project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE
 
 ---
 
