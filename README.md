@@ -1,4 +1,4 @@
-# JuliaLBM - GPU-Accelerated Lattice Boltzmann CFD Solver
+# OPEN_Ludwig - GPU-Accelerated Lattice Boltzmann CFD Solver
 
 A high-performance, GPU-accelerated Computational Fluid Dynamics (CFD) solver based on the Lattice Boltzmann Method (LBM). Features D3Q27 velocity discretization, WALE turbulence modeling, multi-level grid refinement, and Bouzidi interpolated boundary conditions for accurate aerodynamic simulations.
 
@@ -40,7 +40,7 @@ A high-performance, GPU-accelerated Computational Fluid Dynamics (CFD) solver ba
 
 ### Comparison with State-of-the-Art LBM Solvers
 
-| Feature | JuliaLBM | Traditional LBM | Commercial CFD |
+| Feature | OPEN_Ludwig | Traditional LBM | Commercial CFD |
 |---------|----------|-----------------|----------------|
 | **Velocity Set** | D3Q27 (27 velocities) | D3Q19 typical | N/A (FVM/FEM) |
 | **Collision Operator** | Regularized BGK with WALE | BGK or MRT | Various RANS/LES |
