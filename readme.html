@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuliaLBM - Quick Start</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        .step {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .step-number {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        code {
+            background: #ecf0f1;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95em;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        a { color: #3498db; }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 JuliaLBM Quick Start</h1>
+    <p>GPU-accelerated Lattice Boltzmann CFD Solver</p>
+
+    <h2>Requirements</h2>
+    <ul>
+        <li><strong>Julia 1.9+</strong> — <a href="https://julialang.org/downloads/" target="_blank">Download here</a></li>
+        <li><strong>NVIDIA GPU</strong> with CUDA support (8+ GB VRAM recommended)</li>
+    </ul>
+
+    <h2>Installation & First Run</h2>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        <strong>Install Dependencies</strong> (first time only)
+        <pre><code>julia src/00_First_time_install_packages.jl</code></pre>
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        <strong>Select Cases to Run</strong><br>
+        Edit <code>cases_to_run.yaml</code> to list your cases:
+        <pre><code>case_folders:
+  - "Stanford_bunny"
+  - "Wing_5_deg"</code></pre>
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        <strong>Run the Solver</strong>
+        <pre><code>julia src/_RUN_CASE_.jl</code></pre>
+    </div>
+
+    <div class="success">
+        <strong>✓ Results</strong> are saved in <code>CASES/&lt;case_name&gt;/RESULTS/</code><br>
+        Open <code>.vtu</code> files in <a href="https://www.paraview.org/" target="_blank">ParaView</a> for visualization.
+    </div>
+
+    <h2>Creating a New Case</h2>
+    <ol>
+        <li>Create folder in <code>CASES/</code> (e.g., <code>CASES/My_Case/</code>)</li>
+        <li>Add your STL geometry file</li>
+        <li>Copy <code>config.yaml</code> from an existing case and modify</li>
+        <li>Add case name to <code>cases_to_run.yaml</code></li>
+    </ol>
+
+    <h2>Key Config Parameters</h2>
+    <table style="width:100%; border-collapse: collapse; background: white;">
+        <tr style="background: #3498db; color: white;">
+            <th style="padding: 10px; text-align: left;">Parameter</th>
+            <th style="padding: 10px; text-align: left;">Purpose</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 10px;"><code>surface_resolution</code></td>
+            <td style="padding: 10px;">Mesh density (higher = finer, more memory)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 10px;"><code>flow.velocity</code></td>
+            <td style="padding: 10px;">Inlet velocity [m/s]</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 10px;"><code>simulation.steps</code></td>
+            <td style="padding: 10px;">Total timesteps to run</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px;"><code>num_levels</code></td>
+            <td style="padding: 10px;">Grid refinement levels (0 = auto)</td>
+        </tr>
+    </table>
+
+    <div class="warning">
+        <strong>⚠ First run is slow</strong> — Julia compiles code on first execution. Subsequent runs are much faster.
+    </div>
+
+    <footer>
+        See <a href="README.md">README.md</a> for full documentation
+    </footer>
+</body>
+</html>
