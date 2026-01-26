@@ -40,7 +40,7 @@ A high-performance, GPU-accelerated Computational Fluid Dynamics (CFD) solver ba
 
 ### Comparison with State-of-the-Art LBM Solvers
 
-| Feature | OPEN_Ludwig | Traditional LBM | Commercial CFD |
+| Feature | OPEN_Ludwig | Academic LBM | Commercial CFD |
 |---------|----------|-----------------|----------------|
 | **Velocity Set** | D3Q27 (27 velocities) | D3Q19 typical | N/A (FVM/FEM) |
 | **Collision Operator** | Regularized BGK with WALE | BGK or MRT | Various RANS/LES |
