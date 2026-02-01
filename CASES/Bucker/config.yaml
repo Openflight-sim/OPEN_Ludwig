@@ -32,13 +32,13 @@ basic:
   # "N" cells spanning the reference length.
   # Higher = More accurate, but RAM and Compute usage scale with N^3 and N^4 respectively.
   # For WMLES (Wall Modeled LES), target a first-cell y+ of 30-100.
-  surface_resolution: 150   #620 for 24Gb VRAM
+  surface_resolution: 350
   
   # Number of grid refinement levels (Multi-grid).
   # 0 = AUTO-COMPUTE (Recommended). The solver calculates the number of levels needed
   #     to ensure the far-field boundaries are far enough away.
   # >0 = Manual override (e.g., set to 7 to force exactly 7 levels).
-  num_levels: 5
+  num_levels: 7
   
   # --------------------------------------------------------------------------
   # REFERENCE VALUES (Required for Aerodynamic Coefficients)
@@ -62,7 +62,7 @@ basic:
   # The dimension corresponding to the reference length in the STL file.
   # Options: "x", "y", "z". Usually "x" for flow aligned with X-axis.
   reference_dimension: "x"
-   
+    
   # --------------------------------------------------------------------------
   # PHYSICS
   # --------------------------------------------------------------------------
@@ -142,6 +142,11 @@ advanced:
     # Safety multiplier for Tau calculation in auto-refinement.
     # 1.0 = Aggressive. >1.0 = Conservative (coarser grid for safety).
     tau_safety_factor: 1.0
+
+    # Inlet Turbulence Intensity (0.0 to 1.0).
+    # Adds synthetic fluctuations to the inlet velocity to trip the boundary layer.
+    # 0.01 = 1% turbulence.
+    inlet_turbulence_intensity: 0.01
   
   # --------------------------------------------------------------------------
   # HIGH REYNOLDS NUMBER OPTIONS
@@ -179,10 +184,10 @@ advanced:
   # --------------------------------------------------------------------------
   # All values are multiples of 'reference_length'.
   domain:
-    upstream: 0.75        # Space in front of the object.
-    downstream: 1.5       # Space behind the object (wake region).
-    lateral: 0.75         # Space to the sides.
-    height: 0.75          # Space above/below.
+    upstream: 2.        # Space in front of the object.
+    downstream: 2.5       # Space behind the object (wake region).
+    lateral: 2.         # Space to the sides.
+    height: 2.          # Space above/below.
     
     # Thickness of the viscosity sponge layer at boundaries (absorbs reflections).
     # Fraction of domain size (0.10 = 10%).
@@ -211,6 +216,11 @@ advanced:
     # Wake refinement zone (Box behind the object).
     # Forces high resolution in the wake to capture vortices.
     wake_enabled: false
+    
+    # Wake dimensions (relative to reference_length)
+    wake_length: 0.25
+    wake_width_factor: 0.1
+    wake_height_factor: 0.1
   
   # --------------------------------------------------------------------------
   # BOUNDARY CONDITIONS
@@ -248,7 +258,7 @@ advanced:
   # --------------------------------------------------------------------------
   diagnostics:
     # Frequency (in steps) to print status to console and write CSV logs.
-    freq: 500
+    freq: 100
     
     # Check for NaNs or exploding velocities at every diagnostic step.
     stability_check: true

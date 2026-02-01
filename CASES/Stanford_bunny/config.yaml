@@ -1,3 +1,4 @@
+# FILE: CASES/Stanford_bunny/config.yaml
 # ==============================================================================
 # LBM SOLVER CONFIGURATION (D3Q27 WMLES - High Re Production Mode)
 # ==============================================================================
@@ -32,7 +33,7 @@ basic:
   # "N" cells spanning the reference length.
   # Higher = More accurate, but RAM and Compute usage scale with N^3 and N^4 respectively.
   # For WMLES (Wall Modeled LES), target a first-cell y+ of 30-100.
-  surface_resolution:  230     #650 for 24Gb VRAM
+  surface_resolution:  650
   
   # Number of grid refinement levels (Multi-grid).
   # 0 = AUTO-COMPUTE (Recommended). The solver calculates the number of levels needed
@@ -142,6 +143,11 @@ advanced:
     # Safety multiplier for Tau calculation in auto-refinement.
     # 1.0 = Aggressive. >1.0 = Conservative (coarser grid for safety).
     tau_safety_factor: 1.0
+
+    # Inlet Turbulence Intensity (0.0 to 1.0).
+    # Adds synthetic fluctuations to the inlet velocity to trip the boundary layer.
+    # 0.01 = 1% turbulence.
+    inlet_turbulence_intensity: 0.01
   
   # --------------------------------------------------------------------------
   # HIGH REYNOLDS NUMBER OPTIONS
@@ -211,6 +217,11 @@ advanced:
     # Wake refinement zone (Box behind the object).
     # Forces high resolution in the wake to capture vortices.
     wake_enabled: false
+    
+    # Wake dimensions (relative to reference_length)
+    wake_length: 0.25
+    wake_width_factor: 0.1
+    wake_height_factor: 0.1
   
   # --------------------------------------------------------------------------
   # BOUNDARY CONDITIONS

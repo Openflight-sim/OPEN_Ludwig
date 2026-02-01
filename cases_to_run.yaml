@@ -5,4 +5,7 @@
 case_folders:
   #- "Stanford_bunny"
   #- "Wing_5_deg"
-  - "Bucker"
+  #- "Bucker"
+  #- "Wing_0_deg"
+  #- cube1m
+  - ball1m

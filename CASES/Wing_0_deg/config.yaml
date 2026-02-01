@@ -19,7 +19,7 @@ basic:
   # --------------------------------------------------------------------------
   # The STL file defining the obstacle. 
   # IMPORTANT: The code looks for this file INSIDE your active case folder.
-  stl_file: "model5deg.stl"
+  stl_file: "model.stl"
   
   # Scale factor applied to the STL geometry vertices.
   # Use 0.001 if your STL is in millimeters but you want meters.
@@ -33,7 +33,7 @@ basic:
   # "N" cells spanning the reference length.
   # Higher = More accurate, but RAM and Compute usage scale with N^3 and N^4 respectively.
   # For WMLES (Wall Modeled LES), target a first-cell y+ of 30-100.
-  surface_resolution: 1100
+  surface_resolution: 200
   
   # Number of grid refinement levels (Multi-grid).
   # 0 = AUTO-COMPUTE (Recommended). The solver calculates the number of levels needed
@@ -92,7 +92,7 @@ basic:
     
     # How often to write full 3D VTK output files.
     # High frequency = huge disk usage.
-    output_freq: 2500
+    output_freq: 500
     
     # Name of the folder where results will be saved (inside the case directory).
     output_dir: "RESULTS"
